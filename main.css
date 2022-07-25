@@ -1,0 +1,17 @@
+/* 
+CSS
+*/
+* {
+    /* I like to have full control over my trash.*/
+    padding: 0%;
+    margin: 0%;
+}
+
+.welcome {
+    color:rgb(4, 54, 4);
+    font-size: 48px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    padding: 4px;
+    margin-top: 48px;
+}
