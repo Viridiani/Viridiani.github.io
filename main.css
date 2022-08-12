@@ -1,17 +1,147 @@
 /* 
 CSS
 */
+
+@font-face {
+    font-family: TreeRoot;
+    src: url(fonts/TreeRoot-ZVgOl.ttf);
+}
+
+@font-face {
+    font-family: SalmaproMedium;
+    src: url(fonts/SalmaproMedium-0Wooo.otf);
+}
+
+
+/* Home */
 * {
     /* I like to have full control over my trash.*/
     padding: 0%;
     margin: 0%;
 }
 
-.welcome {
-    color:rgb(4, 54, 4);
-    font-size: 48px;
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    padding: 4px;
-    margin-top: 48px;
+body {
+    background-color: rgb(0, 0, 0);
+    /* background-image: url("images/landscape_render.png"); */
 }
+
+.welcome {
+    color: white;
+    font-size: 56px;
+    font-family: SalmaproMedium;
+    font-weight: 400;
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome span {
+    background-image: linear-gradient(to top, rgb(51, 0, 48) 0%, rgb(129, 0, 97) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgba(255, 255, 255, 0);
+    font-weight: bold;
+}
+
+/* 
+.forest_image {
+    position: fixed;
+    width: 100%;
+    height: 40%;
+    object-fit: cover;
+} 
+*/
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    background-color: rgb(0, 16, 0);
+    overflow-x: hidden;
+    color:white;
+    box-shadow: inset 0px 10px 30px rgb(0, 40, 0), 0px 10px 20px rgb(0, 10, 0);
+    font-family: SalmaproMedium;
+}
+
+.container header {
+    width: 100%;
+    height: 60px;
+    padding: 10px 60px;
+    justify-content: space-between;
+}
+
+header .nav-title {
+    font-size: 45px;
+    font-weight: 600;
+    width: 30%;
+    margin-left: 60px
+}
+
+header nav ul {
+    justify-content: center;
+    width: 70%;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px 25px;
+    font-weight: 500;
+    color: white;
+}
+
+ /*  */ /*  */ /*  */
+ /* Error Page */
+ .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: SalmaproMedium;
+    color: white;
+    background-image: linear-gradient(to bottom, rgb(0, 60, 0) 0%,rgb(0, 10, 0) 75%, rgb(0, 0, 0) 100%);
+    height: 100vh;
+ }
+
+ .error {
+    text-align: center;
+ }
+
+ .error-title {
+    font-size: 160px;
+    font-weight: 400;
+    margin: 4px;
+    background-image: linear-gradient(to top, rgb(51, 0, 48) 0%, rgb(129, 0, 97) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgba(255, 255, 255, 0);
+ }
+
+ .error-type {
+    font-size: 60px;
+    font-weight: 400;
+    margin: 4px;
+ }
+
+ .error-text {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 4px;
+    margin-top: 48px;
+ }
+
+ .error-link {
+    text-decoration: none;
+    background-image: linear-gradient(to top, rgb(51, 0, 48) 0%, rgb(129, 0, 97) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgba(255, 255, 255, 0);
+ }
