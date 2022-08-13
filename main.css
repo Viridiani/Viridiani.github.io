@@ -22,11 +22,12 @@ CSS
 
 body {
     background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     /* background-image: url("images/landscape_render.png"); */
 }
 
 .welcome {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 56px;
     font-family: SalmaproMedium;
     font-weight: 400;
@@ -79,6 +80,11 @@ header .nav-title {
     font-weight: 600;
     width: 30%;
     margin-left: 60px
+}
+
+.nav-title a {
+    text-decoration: none;
+    color: white;
 }
 
 header nav ul {
@@ -145,3 +151,24 @@ nav ul li a {
     background-clip: text;
     color: rgba(255, 255, 255, 0);
  }
+
+/*  */ /*  */ /*  */
+/* About Page */
+.about p {
+    color: rgb(0, 0, 0);
+    text-align: left;
+    padding: 6px;
+    margin: 32px;
+    font-size: 20px;
+    font-family: SalmaproMedium;
+    font-weight: 400;
+}
+
+.placeholder {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 36px;
+    padding: 6px;
+    width: 640px;
+}
