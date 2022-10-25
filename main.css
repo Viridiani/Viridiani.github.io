@@ -21,20 +21,38 @@ CSS
 }
 
 body {
-    background-color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     /* background-image: url("images/landscape_render.png"); */
 }
 
+.two_column_index {
+    display: flex;
+    padding: 0px;
+    z-index: 2;
+}
+
+.two_column_index .left {
+    flex: 33%;
+    float: left;
+    background-color:rgb(60, 103, 60);
+    box-shadow: inset 5px 15px 30px rgba(0, 0, 0, 0.84);
+}
+
+.two_column_index .right {
+    float: right;
+    align-items: right;
+    flex: 66%;
+}
+
 .welcome {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 56px;
     font-family: SalmaproMedium;
     font-weight: 400;
-    position: absolute;
-    top: 18%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 16px;
+    margin: 8px;
+    margin-top: 36px;
 }
 
 .welcome span {
@@ -45,14 +63,11 @@ body {
     font-weight: bold;
 }
 
-/* 
-.forest_image {
-    position: fixed;
+.index_span_image {
     width: 100%;
-    height: 40%;
-    object-fit: cover;
-} 
-*/
+    height: 100%;
+    object-fit: fill;
+}
 
 .flex {
     display: flex;
@@ -64,7 +79,7 @@ body {
     background-color: rgb(0, 16, 0);
     overflow-x: hidden;
     color:white;
-    box-shadow: inset 0px 10px 30px rgb(0, 40, 0), 0px 10px 20px rgb(0, 10, 0);
+    box-shadow: inset 0px 10px 30px rgb(0, 40, 0);
     font-family: SalmaproMedium;
 }
 
