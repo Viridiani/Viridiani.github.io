@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <head>
+            <meta charset="utf-8">
+            <title>Chess Test</title>
+            <link rel="stylesheet" href="refactor.css">
+          </head>
+    </head>
+    <body>
+        <h1>Chess Game</h1>
+        <div id="myBoard" style="width: 500px; margin: auto;"></div>
+        <div class="settings">
+            <form name="set" action="" method="GET">
+                <h2>Settings</h2>
+                <span><h3>Board Setup</h3>
+                    <ul>
+                        <li><input type="radio" name="set_board" value="start"> Standard</li>
+                        <li><input type="radio" name="set_board" value="fen"> FEN string <input type="text" name="fen_str"><br>
+                            <p>The text entered should look like the following:<br>
+                                r1k4r/p2nb1p1/2b4p/1p1n1p2/2PP4/3Q1NB1/1P3PPP/R5K1 b - c3 0 19<br>
+                                Default: <br>
+                                rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1<br>
+                                This should <em>not</em> override the color settings. Color is still required
+                            </p></li>
+                    </ul>
+                </span>
+                <span><h3>Your Color</h3>
+                    <ul>
+                        <li><input type="radio" name="color" value="white"> White</li>
+                        <li><input type="radio" name="color" value="black"> Black</li>
+                        <li><input type="radio" name="color" value="random"> Random</li>
+                    </ul>
+                </span>
+                <span><h3>Opponent</h3>
+                    <ul>
+                        <li><input type="radio" name="opponent" value="random"> AI makes random moves</li>
+                    </ul>
+                </span>
+                <span><h3>AI VS AI?</h3>
+                    <ul>
+                        <li><input type="checkbox" id="vs_ai"> Yes</li>
+                    </ul>
+                </span>
+                <input type="button" name="button" value="Confirm" onclick="settingsFormResults(this.form)">
+            </form>
+        </div>
+        <div class="info">
+            <h2>Game info</h2>
+            <span><h3>Game Status</h3>
+                <ul>
+                    <li><p id="game_status_p">N/A</p></li>
+                </ul>
+            </span>
+            <span><h3>FEN</h3>
+                <ul>
+                    <li><p id="game_fen_p">N/A</p></li>
+                </ul>
+            </span>
+            <span><h3>PGN</h3>
+                <ul>
+                    <li><p id="game_pgn_p">N/A</p></li>
+                </ul>
+            </span>
+        </div>
+        <p class="to_index"><a href="index.html">Return</a></p>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script> 
+        <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js" integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js" integrity="sha384-s3XgLpvmHyscVpijnseAmye819Ee3yaGa8NxstkJVyA6nuDFjt59u1QvuEl/mecz" crossorigin="anonymous"></script>
+        
+        <script>
+            // global vars
+            var board = null;
+            var game = new Chess();
+            var global_mode = null;  // Needed for opponent moving after dropping a piece (see OnDrop)
+            var global_ai = null;   // Needed to make board/game reset correctly upon creation of new form (clearTimeout)
+            
+            // Funky fen notation fix
+            var global_color = null;
+            var opponent_move = false;
+
+            // Gets info from form and uses it
+            function settingsFormResults(form) {
+                var initial_pos = form.set_board.value;
+                var setup = [initial_pos];
+
+                if (initial_pos == "fen") {
+                    initial_pos = form.fen_str.value;
+                } else {
+                    initial_pos = "start";
+                }
+                setup.push(initial_pos);
+
+                var color = form.color.value;
+                global_color = color;
+                var opponent = form.opponent.value;
+                var vs = document.querySelector('#vs_ai').checked; // true or false
+                init_board(setup, color, opponent, vs);
+            }
+
+            // Initialize board
+            function init_board(setup, color, mode, vs) {
+                // color switch
+                // Set color
+                switch(color) {
+                    case "white":
+                        color = 'white';
+                        break;
+                    case "black":
+                        color = 'black';
+                        opponent_move = true;
+                        break;
+                    case "random":
+                        color = Math.floor(Math.random() * 2) + 1;
+                        if (color == 1) {
+                            color = 'white';
+                            opponent_move = false;
+                        } else {
+                            color = 'white';
+                            opponent_move = false;
+                        }
+                        break;
+                } 
+
+                // adjust globals
+                global_mode = mode;
+                clearTimeout(global_ai);
+
+                // set board config
+                if (!vs) {
+                    var config = {
+                        draggable: true,
+                        orientation: color,
+                        position: setup[1],
+                        onDragStart: onDragStart,
+                        onDrop: onDrop,
+                        onSnapEnd: onSnapEnd
+                    }
+                } else {
+                    var config = {
+                        orientation: color,
+                        position: setup[1]
+                    }
+                }
+
+                // delete previous game and create new one
+                game.clear();
+                
+                // match chess.js with chessboard.js
+                if (setup[0] == "fen") {game = new Chess(setup[1]);}
+                else {game = new Chess();}
+                board = Chessboard('myBoard', config);
+                updateStatus();
+
+                // set ai/mode
+                // Also first move for weird events (e.g. fen string where player is black)
+                if (vs) {
+                    switch(mode) {
+                        case "random":
+                            global_ai = window.setTimeout(makeRandomMoveLoop, 500);
+                            break;
+                    }
+                } else if (!vs && opponent_move) {
+                    switch(mode) {
+                        case "random":
+                            if (global_color == "white" && game.turn() == "b") {
+                                global_ai = makeRandomMoveAI();
+                            } else if (global_color == "black" && game.turn() == "w") {
+                                global_ai = makeRandomMoveAI();
+                            }
+                            break;
+                    }
+                }
+            }
+
+            // Random movement
+            function makeRandomMoveLoop () {
+                var possibleMoves = game.moves()
+
+                // exit if the game is over
+                if (game.game_over()) {
+                    updateStatus();
+                    return
+                }
+
+                var randomIdx = Math.floor(Math.random() * possibleMoves.length);
+                game.move(possibleMoves[randomIdx]);
+                board.position(game.fen());
+               
+                global_ai = window.setTimeout(makeRandomMoveLoop, 500);
+                updateStatus();
+            }
+
+            // Random movement against player
+            function makeRandomMoveAI () {
+                var possibleMoves = game.moves();
+
+                // game over
+                if (possibleMoves.length === 0) {
+                    updateStatus();    
+                    return
+                }
+
+                var randomIdx = Math.floor(Math.random() * possibleMoves.length);
+                game.move(possibleMoves[randomIdx]);
+                board.position(game.fen());
+                updateStatus();
+            }
+
+            function makeIntelligentMoveAI() {
+
+            }
+
+            // Draggable Pieces
+            function onDragStart (source, piece, position, orientation) {
+                // do not pick up pieces if the game is over
+                if (game.game_over()) {
+                    updateStatus();
+                    return false
+                }
+
+                // only pick up pieces for color opposite to AI
+                if ((orientation === 'white' && piece.search(/^w/) === -1) || (orientation === 'black' && piece.search(/^b/) === -1)) {
+                    return false
+                }
+            }
+
+            function onDrop (source, target) {
+                // see if the move is legal
+                var move = game.move({
+                    from: source,
+                    to: target,
+                    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+                });
+
+                // illegal move
+                if (move === null) return 'snapback';
+
+                // make random legal move for opposite color
+                updateStatus();
+                if (global_mode == 'random') {global_ai = window.setTimeout(makeRandomMoveAI, 250);};
+            }
+
+            // update the board position after the piece snap
+            // for castling, en passant, pawn promotion
+            function onSnapEnd () {
+                board.position(game.fen());
+            }
+
+            function updateStatus () {
+                var status = '';
+                var moveColor = 'White';
+                if (game.turn() === 'b') {
+                    moveColor = 'Black';
+                }
+
+                // checkmate?
+                if (game.in_checkmate()) {
+                    status = 'Game over, ' + moveColor + ' is in checkmate.';
+                } else if (game.in_draw()) {  // draw?
+                    status = 'Game over, drawn position';
+                } else {  // game still on
+                    status = moveColor + ' to move'
+                    // check?
+                    if (game.in_check()) {
+                    status += ', ' + moveColor + ' is in check'
+                    }
+                }
+
+                // Update Box
+                document.getElementById("game_fen_p").innerHTML = game.fen();
+                document.getElementById("game_pgn_p").innerHTML = game.pgn();
+                document.getElementById("game_status_p").innerHTML = status;
+                document.getElementById("test_paragraph").innerHTML = game.ugly_moves;
+            }
+                        
+            // Display starting chessboard
+            var config = {
+                        draggable: true,
+                        orientation: "white",
+                        position: "start",
+                        onDragStart: onDragStart,
+                        onDrop: onDrop,
+                        onSnapEnd: onSnapEnd
+                    }
+            board = Chessboard('myBoard', config)
+        </script>
+        </body>
+</html>
