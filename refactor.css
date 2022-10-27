@@ -84,7 +84,18 @@ ul li p {
 
 .info {
     position: absolute;
-    left: 10%;
+    left: 5%;
+    top: 25%;
+    border: 2px solid #000000;
+    width: 500px;
+    text-align: left;
+    padding: 12px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.notes {
+    position: absolute;
+    right: 5%;
     top: 25%;
     border: 2px solid #000000;
     width: 500px;
@@ -115,4 +126,9 @@ h3 {
 
 .to_index a {
     color: rgb(0, 60, 0);
+}
+
+.notes a {
+    color: rgb(0, 60, 0);
+    font-weight: bold;
 }

@@ -63,6 +63,14 @@
                 </ul>
             </span>
         </div>
+        <div class="notes">
+            <h2>Notes</h2>
+            <p>
+                This is the base for an AI I want to make that can play chess. Credits to <a href="https://chessboardjs.com/">chessboard.js</a> by
+                <a href="https://github.com/oakmac/chessboardjs/">oakmac</a> and <a href="https://github.com/jhlywa/chess.js/blob/master/README.md">chess.js</a>
+                by <a href="https://github.com/jhlywa">jhlywa</a>.
+            </p>
+        </div>
         <p class="to_index"><a href="index.html">Return</a></p>
         <script src="node_modules/jquery/dist/jquery.min.js"></script> 
         <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js" integrity="sha384-8Vi8VHwn3vjQ9eUHUxex3JSN/NFqUg3QbPyX8kWyb93+8AC/pPWTzj+nHtbC5bxD" crossorigin="anonymous"></script>
@@ -219,30 +227,28 @@
                     return false
                 }
 
-                // only pick up pieces for color opposite to AI
+                // Only pick up pieces for color opposite to AI
                 if ((orientation === 'white' && piece.search(/^w/) === -1) || (orientation === 'black' && piece.search(/^b/) === -1)) {
                     return false
                 }
             }
 
             function onDrop (source, target) {
-                // see if the move is legal
                 var move = game.move({
                     from: source,
                     to: target,
-                    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+                    promotion: 'q'
                 });
 
-                // illegal move
+                // NOT LEGAL
                 if (move === null) return 'snapback';
 
-                // make random legal move for opposite color
+                // Make random legal move for opposite color
                 updateStatus();
                 if (global_mode == 'random') {global_ai = window.setTimeout(makeRandomMoveAI, 250);};
             }
 
-            // update the board position after the piece snap
-            // for castling, en passant, pawn promotion
+            // Update board position and status
             function onSnapEnd () {
                 board.position(game.fen());
             }
@@ -254,14 +260,14 @@
                     moveColor = 'Black';
                 }
 
-                // checkmate?
+                // Check checkmate
                 if (game.in_checkmate()) {
                     status = 'Game over, ' + moveColor + ' is in checkmate.';
-                } else if (game.in_draw()) {  // draw?
+                } else if (game.in_draw()) {
                     status = 'Game over, drawn position';
-                } else {  // game still on
+                } else {
                     status = moveColor + ' to move'
-                    // check?
+
                     if (game.in_check()) {
                     status += ', ' + moveColor + ' is in check'
                     }
@@ -271,7 +277,6 @@
                 document.getElementById("game_fen_p").innerHTML = game.fen();
                 document.getElementById("game_pgn_p").innerHTML = game.pgn();
                 document.getElementById("game_status_p").innerHTML = status;
-                document.getElementById("test_paragraph").innerHTML = game.ugly_moves;
             }
                         
             // Display starting chessboard

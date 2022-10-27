@@ -183,8 +183,8 @@ nav ul li a {
     color: rgb(0, 60, 0);
     font-size: 56px;
     font-family: SalmaproMedium;
-    padding: 36px;
-    margin: 36px;
+    padding: 12px;
+    margin: 12px;
 }
 
 .projects_section h2 {
@@ -202,13 +202,35 @@ nav ul li a {
     align-items: center;
     justify-content: center;
     text-align: center;
+    flex-wrap: wrap;
 }
 
 .main_flex img {
-    padding: 8px;
-    margin: 8px;
+    padding: 4px;
+    margin: 4px;
     width: 25%;
     height: 25%;
+}
+
+
+.contact_section p {
+    text-align: center;
+    color: rgb(0, 60, 0);
+    font-family: SalmaproMedium;
+    font-size: 24px;
+}
+
+.contact_section a {
+    padding: 4px;
+    color: rgb(0, 60, 0);
+}
+
+/* Footer */
+footer {
+    padding: 24px;
+    margin-top: 24px;
+    background-color: #dfdfdf;
+    box-shadow: inset 0px 2px 12px white;
 }
 
  /*  */ /*  */ /*  */
