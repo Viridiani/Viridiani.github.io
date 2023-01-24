@@ -1,0 +1,44 @@
+/* Scroll Bar */
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background: #e1e1e1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Main */
+body {
+    background-image: url("img/geocity/background.png");
+}
+
+h1 {
+    text-align: center;
+    font-size: 500%;
+    padding: 24px;
+    margin: 24px;
+    padding-top: 72px;
+    color: #6633CC;
+}
+
+p {
+    text-align: center;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 150%;
+    color: #003399
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

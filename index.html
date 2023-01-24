@@ -16,10 +16,11 @@
         <div class="nav-title"><a href="javascript:void(0);" onclick="scroll_to_id('top_of_page')">Viridian</a></div>
         <nav>
           <ul class="flex">
-            <!-- <li><a href="about.html">About</a></li> -->
-            <!-- <li><a href="javascript:void(0);" onclick="scroll_to_id('portfolio')">Portfolio</a></li> -->
+            <li><a href="javascript:void(0);" onclick="scroll_to_id('about')">About</a></li>
+            <li><a href="javascript:void(0);" onclick="scroll_to_id('experience')">Experience</a></li>
             <li><a href="javascript:void(0);" onclick="scroll_to_id('projects')">Projects</a></li>
             <li><a href="javascript:void(0);" onclick="scroll_to_id('contact')">Contact</a></li>
+            <li><a>&nbsp;</a></li>
           </ul>
         </nav>
       </header>
@@ -30,44 +31,60 @@
         <div class="left">
           <div class="welcome">Welcome<span>!</span></div>
           <br>
-          <div class="stubborn">
             <img class="profile_photo" src="img/bust.JPEG" alt="profile photo" width="600" height="900">
-          </div>
-          <p class="intro_text">I'm Avery, an aspiring software engineer and computer scientist. I enjoy coding and I specialize in frontend development and IT.</p>
+          <p class="intro_text">I'm Avery, an aspiring software engineer and computer scientist.</p>
         </div>
         <div class="right">
           <img class="index_span_image" src="img/index_personal_image.JPEG" alt="personal photo">
         </div>
       </div>
     </div>
-    <br>
     <div class="main">
+      <div class="about" id="about">
+        <h1>About Me</h1>
+        <br>
+        <div class="about_border">
+          <p>Hello! My name is Avery Christie and I am a software developer. I grew up in the Foothills of Colorado. When I was stuck inside due to the weather, I fell in love with computers and coding.
+            I've dabbled in just about everything to do with computers: AI, networking, cybersecurity, IT, DevOps, data science... and I intend to keep learning.</p>
+        </div>
+      </div>
+      <div class="experience" id="experience">
+        <h1>Experience</h1>
+        <br>
+      </div>
       <div class="projects_section" id="projects">
         <h1>Projects</h1>
         <br>
         <div class="coding_projects">
           <h2>Coding</h2>
           <div class="main_flex">
-            <a href="refactor.html"><img src="img/projects/chess_game.jpg" id="chess" alt="chess game"></a>
-            <a href="https://github.com/Viridiani/Recipe-Generator"><img src="img/projects/recipe generator.JPG" id="recipe_gen" alt="recipe generator"></a>
+            <div class="box">
+              <a href="refactor.html"><img src="img/projects/chess_game.jpg" id="chess" alt="chess game"></a>
+            </div>
+            <div class="box">
+              <a href="https://github.com/Viridiani/Recipe-Generator"><img src="img/projects/recipe generator.JPG" id="recipe_gen" alt="recipe generator"></a>
+            </div>
           </div>
           <br>
         </div>
-        <div class="3d_models_section">
+        <div class="models_projects">
           <h2>3D Models</h2>
             <div class="main_flex">
-              <a href="javascript:void(0);"><img src="img/3d models/landscape_render.png" id="landscape" alt="landscape render" onclick="change_size('landscape')"></a>
-              <a href="javascript:void(0);"><img src="img/3d models/infinite_hallway.png" id="infinite_hallway" alt="infinite hallway" onclick="change_size('infinite_hallway')"></a>
-              <a href="javascript:void(0);"><img src="img/3d models/room_final.png" id="room" alt="room" onclick="change_size('room')"></a>
+              <div class="models_project_box">
+                <a href="javascript:void(0);"><img src="img/3d models/landscape_render.png" id="landscape" alt="landscape render" onclick="change_size('landscape')"></a>
+              </div>
+              <div class="models_project_box">
+                <a href="javascript:void(0);"><img src="img/3d models/infinite_hallway.png" id="infinite_hallway" alt="infinite hallway" onclick="change_size('infinite_hallway')"></a>
+              </div>
+              <div class="models_project_box">
+                <a href="javascript:void(0);"><img src="img/3d models/room_final.png" id="room" alt="room" onclick="change_size('room')"></a>
+              </div>
             </div>
           <br>
         </div>
       </div>
-      <!-- <div class="portfolio_section" id="portfolio">
-        <h1>Portfolio</h1>
-      </div> -->
       <div class="contact_section" id="contact">
-        <h1>Contact</h1>
+        <h1>Contact Me</h1>
         <p><a href="mailto:averychristie50@gmail.com">averychristie50@gmail.com</a></p>
       </div>
     </div>
@@ -84,8 +101,8 @@
     let flags = []
     function change_size(element_id) {
       if (flags.includes(element_id)) {
-        document.getElementById(element_id).style.width = "25%";
-        document.getElementById(element_id).style.height = "25%";
+        document.getElementById(element_id).style.width = "50%";
+        document.getElementById(element_id).style.height = "50%";
 
         flags.splice(flags.indexOf(element_id), 1);
       } else {
