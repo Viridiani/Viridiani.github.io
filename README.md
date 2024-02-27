@@ -1,2 +1,4 @@
 # Viridiani.github.io
-My personal website. One day I'll get a domain name. Hopefully.
+<h1>Personal Website</h1>
+<br>
+<p>Includes projects I have worked on and am currently working on.</p>
