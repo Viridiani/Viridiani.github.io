@@ -1,0 +1,314 @@
+/* Fonts */
+@font-face {
+    font-family: Streak;
+    src: url(fonts/lt_streak/LTStreak-Medium.ttf);
+}
+@font-face {
+    font-family: SoundDistortion;
+    src: url(fonts/sound_distortion/Sound\ Distortion.otf);
+}
+* {
+    font-family: Streak;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Scroll Bar */
+::-webkit-scrollbar {
+    width: 14px;
+}
+::-webkit-scrollbar-track {
+    background: #e1e1e1;
+}
+::-webkit-scrollbar-thumb {
+    background: #aaa;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* Header */
+.navbar {
+    background-color: rgb(34, 48, 30);
+    overflow: hidden;
+}
+.navbar a {
+    float: left;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 16px 16px;
+    font-size: 18pt;
+    color: #eee;
+}
+.navbar #viridiani {
+    color: rgb(129, 0, 97);
+}
+.navbar a:hover {
+    background-color: #ccc;
+    color: black;
+}
+.navbar a:active {
+    background-color: #056e16;
+    color: white;
+}
+.navbar .icon {
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .navbar a:not(:first-child) {
+        display: none;
+    }
+    .navbar a.icon {
+        float: right;
+        display: block;
+    }
+}
+@media screen and (max-width: 600px) {
+    .navbar.responsive {
+        position: relative;
+    }
+    .navbar.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navbar.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+.hamburger_container {
+    display: inline-block;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+    max-height: 21px;
+}
+.hamburger_bar1, .hamburger_bar2, .hamburger_bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: whitesmoke;
+    color: black;
+    margin: 6px 6px;
+    transition: 0.4s;
+    border-radius: 2px;
+}
+.change .hamburger_bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+.change .hamburger_bar2 {
+    opacity: 0;
+}
+.change .hamburger_bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+/* Body */
+body {
+    background-color: #eee;
+}
+.title {
+    text-align: center;
+    background-image: linear-gradient(to top, rgb(51, 0, 48) 0%, rgb(129, 0, 97) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgba(255, 255, 255, 0);
+    font-size: 64pt;
+    margin: 20px;
+    padding: 4px;
+}
+.subtitle {
+    text-align: center;
+    font-size: 48pt;
+    margin: 16px;
+    padding: 4px;
+    color: rgb(129, 0, 97);
+}
+.subsubtitle {
+    text-align: center;
+    color: #222;
+    font-size: 30pt;
+    margin: 8px;
+    padding: 2px;
+    margin-top: 16px;
+}
+.link {
+    color: rgb(129, 0, 97);
+    text-decoration: underline;
+}
+#projects {
+    overflow: hidden;
+    justify-content: center;
+}
+#projects p {
+    color: #222;
+    font-size: 18pt;
+    text-align: center;
+}
+#projects p::first-letter {
+    color: rgb(129, 0, 97);
+    font-size: 20pt;
+}
+.coding_project {
+    display: block;
+    justify-content: center;
+    text-align: center;
+    object-fit: contain;
+    margin: 8px;
+    padding: 4px;
+    width: 30%;
+    height: 30%;
+}
+.project_caption {
+    color: #222;
+    text-align: center;
+}
+.project_caption h3 {
+    font-size: 20pt;
+}
+.project_caption h3::first-letter {
+    color: rgb(129, 0, 97);
+    font-size: 22pt;
+}
+#projects .projects_bar img {
+    margin: 8px;
+    padding: 4px;
+    text-align: center;
+    object-fit: contain;
+    transition: 0.15s;
+    display: block;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.project_image {
+    width: 50%;
+    height: 50%;
+}
+.size_project_image {
+    width: 100%;
+    height: 100%;
+}
+.hidden_text {
+    display: none;
+}
+@media screen and (max-width: 600px) {
+    .hidden_text {
+        display: block;
+    }
+}
+#about {
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+#about p {
+    color: #222;
+    font-size: 18pt;
+    text-align: left;
+}
+#about p::first-letter {
+    color: rgb(129, 0, 97);
+    font-size: 20pt;
+}
+.text_grid {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60vw;
+    text-align: center;
+}
+.text_grid p {
+    margin: 4px;
+}
+#contact {
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+#contact .flexbox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+#contact .icon {
+    object-fit: contain;
+    width: 75px;
+    height: 75px;
+    margin: 8px;
+    padding: 4px;
+}
+#me {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border: 3px solid #333;
+    border-radius: 100%;
+    margin: 12px;
+}
+#me_caption {
+    text-align: center;
+    margin: 2px;
+    font-size: 18pt;
+}
+
+/* Footer */
+#footer {
+    background-color: rgb(34, 48, 30);
+    overflow: hidden;
+    padding: 8px;
+    margin-top: 24px;
+}
+#footer p {
+    padding: 4px;
+    color: #eee;
+    text-align: center;
+    font-size: 16pt;
+}
+
+/* Error Page */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Streak;
+    color: white;
+    background-image: linear-gradient(to bottom, rgb(0, 60, 0) 0%,rgb(0, 10, 0) 75%, rgb(0, 0, 0) 100%);
+    height: 100vh;
+}
+.error {
+    text-align: center;
+}
+.error-title {
+    font-size: 160px;
+    font-weight: 400;
+    margin: 4px;
+    background-image: linear-gradient(to top, rgb(51, 0, 48) 0%, rgb(129, 0, 97) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgba(255, 255, 255, 0);
+}
+.error-type {
+    font-size: 60px;
+    font-weight: 400;
+    margin: 4px;
+}
+.error-text {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 4px;
+    margin-top: 48px;
+}
+.error-link {
+    text-decoration: none;
+    background-image: linear-gradient(to top, rgb(51, 0, 48) 0%, rgb(129, 0, 97) 60%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: rgba(255, 255, 255, 0);
+}

@@ -1,117 +1,192 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="main.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <link rel="manifest" href="favicon/site.webmanifest">
-    <title>Viridiani's Website</title>
-  </head>
-  <body>
-    <div id="top_of_page"></div>
-    <div class="container">
-      <header class="flex">
-        <div class="nav-title"><a href="javascript:void(0);" onclick="scroll_to_id('top_of_page')">Viridian</a></div>
-        <nav>
-          <ul class="flex">
-            <li><a href="javascript:void(0);" onclick="scroll_to_id('about')">About</a></li>
-            <li><a href="javascript:void(0);" onclick="scroll_to_id('experience')">Experience</a></li>
-            <li><a href="javascript:void(0);" onclick="scroll_to_id('projects')">Projects</a></li>
-            <li><a href="javascript:void(0);" onclick="scroll_to_id('contact')">Contact</a></li>
-            <li><a>&nbsp;</a></li>
-          </ul>
-        </nav>
-      </header>
-    </div>
-    
-    <div class="home">
-      <div class="two_column_index">
-        <div class="left">
-          <div class="welcome">Welcome<span>!</span></div>
-          <br>
-            <img class="profile_photo" src="img/bust.JPEG" alt="profile photo" width="600" height="900">
-          <p class="intro_text">I'm Avery, an aspiring software engineer and computer scientist.</p>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Avery Christie">
+        <meta name="description" content="Professional and personal website of Viridiani.">
+        <meta name="keywords" content="Viridiani, programming, blog">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="index.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+        <link rel="manifest" href="favicon/site.webmanifest">
+        <title>Viridiani's Website</title>
+        <script>
+            function displayNav() {
+                let y = document.getElementById("hamburger_container").classList;
+                y.toggle("change");
+                let x = document.getElementById("header");
+                if (x.className === "navbar") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "navbar";
+                }
+            }
+            function getYear() {
+                const d = new Date();
+                let year = d.getFullYear();
+                let x = document.getElementById("copyright");
+                x.textContent += year;
+            }
+            function sizeImage(image) {
+                let x = image.classList;
+                x.toggle("project_image");
+                x.toggle("size_project_image");
+            }
+        </script>
+    </head>
+    <body>
+        <!-- <div id="top_of_page"></div> -->
+        <header id="header" class="navbar">
+            <a href="#home" id="viridiani" class="active">Viridiani</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <!-- <a href="#blog">Blog</a> -->
+            <a href="#contact">Contact Me</a>
+            <a href="javascript:void(0);" class="icon" onclick="displayNav()">
+                <div id="hamburger_container" class="hamburger_container">
+                    <div class="hamburger_bar1"></div>
+                    <div class="hamburger_bar2"></div>
+                    <div class="hamburger_bar3"></div>
+                </div>
+            </a>
+        </header>
+        <div id="welcome">
+            <!-- Should design background -->
+            <h1 class="title" id="home">Welcome</h1>
         </div>
-        <div class="right">
-          <img class="index_span_image" src="img/index_personal_image.JPEG" alt="personal photo">
-        </div>
-      </div>
-    </div>
-    <div class="main">
-      <div class="about" id="about">
-        <h1>About Me</h1>
-        <br>
-        <div class="about_border">
-          <p>Hello! My name is Avery Christie and I am a software developer. I grew up in the Foothills of Colorado. When I was stuck inside due to the weather, I fell in love with computers and coding.
-            I've dabbled in just about everything to do with computers: AI, networking, cybersecurity, IT, DevOps, data science... and I intend to keep learning.</p>
-        </div>
-      </div>
-      <div class="experience" id="experience">
-        <h1>Experience</h1>
-        <br>
-      </div>
-      <div class="projects_section" id="projects">
-        <h1>Projects</h1>
-        <br>
-        <div class="coding_projects">
-          <h2>Coding</h2>
-          <div class="main_flex">
-            <div class="box">
-              <a href="refactor.html"><img src="img/projects/chess_game.jpg" id="chess" alt="chess game"></a>
+        <div id="about">
+            <h1 class="subtitle">About</h1>
+            <div class="text_grid">
+                <p>
+                    Hello! My name is Avery and I am a college student studying for a major in computer science and a minor in geophysics.
+                    I grew up in Colorado and I reside there today. I enjoy hiking, bouldering, and caving. I also like computers (who would have guessed?).
+                </p>
+                <br>
+                <p>
+                    I am a wannabe explorer. Unfortunately, most of the world (minus the ocean) has already been explored. I have resorted
+                    to exploring the internet, as I am interested in what people have made (although space is quite interesting as well).
+                    <!-- My blog, <em><a class="link" href="blog/home.html">Oddities</a></em>, is dedicated to interesting things I have found online: ARGs, unique websites, etc.,
+                    as well as other things or techniques I have stumbled across. -->
+                </p>
+                <br>
+                <p>
+                    Most of my projects shown here are personal projects, although a few projects I have done for school will also probably be pushed onto my GitHub
+                    and mentioned here. 
+                </p>
             </div>
-            <div class="box">
-              <a href="https://github.com/Viridiani/Recipe-Generator"><img src="img/projects/recipe generator.JPG" id="recipe_gen" alt="recipe generator"></a>
-            </div>
-          </div>
-          <br>
         </div>
-        <div class="models_projects">
-          <h2>3D Models</h2>
-            <div class="main_flex">
-              <div class="models_project_box">
-                <a href="javascript:void(0);"><img src="img/3d models/landscape_render.png" id="landscape" alt="landscape render" onclick="change_size('landscape')"></a>
-              </div>
-              <div class="models_project_box">
-                <a href="javascript:void(0);"><img src="img/3d models/infinite_hallway.png" id="infinite_hallway" alt="infinite hallway" onclick="change_size('infinite_hallway')"></a>
-              </div>
-              <div class="models_project_box">
-                <a href="javascript:void(0);"><img src="img/3d models/room_final.png" id="room" alt="room" onclick="change_size('room')"></a>
-              </div>
+        <div id="projects">
+            <h1 class="subtitle">Projects</h1>
+            <!-- Make this into an actual navbar eventually with js to hide/show elements -->
+            <div class="projects_bar">
+                <h2 class="subsubtitle">Coding/Computer Projects</h2>
+                <div class="text_grid">
+                    <p>These are some of my coding or other related projects. Click on any of the images to be directed to the corresponding project/GitHub page.</p>
+                    <br>
+                    <p>
+                        Current WIP projects: PyTorch deep learning project (I would love to do something like this with OpenAI's library, but I do not have a subscription).
+                        2D Platformer game.
+                    </p>
+                    <br>
+                    <figure>
+                        <a href="https://github.com/Viridiani/labyrinth" target="_blank">
+                            <img src="images/coding projects/labyrinth.png" class="coding_project" id="labyrinth_organizer" alt="Labyrinth personal organizer">
+                        </a>
+                        <figcaption class="project_caption">
+                            <h3>Labyrinth</h3>
+                            <p>
+                                A full stack project using Python Django, SQLite, and HTML/CSS/JS to create a personal organizer. Definitely my largest project to date
+                                (September 2023). I am happy with the skills I learned while working on this project (especially learning how to work with SQL), 
+                                but I think if I put more time into it it could be better. However, I also want to move away from web development and start working on
+                                other things, particularly projects with AI.
+                            </p>
+                        </figcaption>
+                    </figure>
+                    <br>
+                    <figure>
+                        <a href="https://github.com/Viridiani/School-Projects" target="_blank">
+                            <figcaption class="project_caption">
+                                <h3>School Projects</h3>
+                                <p>This is a repository of the projects I have done for college/for school. Most are written in C++.</p>
+                            </figcaption>
+                        </a>
+                    </figure>
+                    <br>
+                    <p>
+                        Past here are some projects I have done before college. Most of them are, admittedly, not very good, but I think it's nice to see how I have
+                        improved and what I still need to work on.
+                    </p>
+                    <br>
+                    <figure>
+                        <a href="https://github.com/Viridiani/Enumeration-Script" target="_blank">
+                            <figcaption class="project_caption">
+                                <h3>Enumeration Script</h3>
+                                <p>One of my smaller projects as a way of fiddling around with bash scripting.</p>
+                            </figcaption>
+                        </a>
+                    </figure>
+                    <br>
+                    <figure>
+                        <a href="https://github.com/Viridiani/Recipe-Generator" target="_blank">
+                            <img src="images/coding projects/recipe generator.JPG" class="coding_project" id="recipe_generator" alt="Recipe Generator">
+                        </a>
+                        <figcaption class="project_caption">
+                            <h3>Recipe Generator</h3>
+                            <p>My first coding project I have done. A simple "recipe" generator written in Python. Made back in 2022.</p>
+                        </figcaption>
+                    </figure>
+                    <br>
+                </div>
+                <br>
+                <h2 class="subsubtitle">3D Modeling Work</h2>
+                <div class="text_grid">
+                    <p>Some 3D models or other art I have made. The 3D models are made in Blender. Click on any of the images to enlarge them.</p>
+                    <br>
+                    <p>Current WIP project: game models.</p>
+                    <p class="hidden_text">Generally, these images are better to look at on a desktop or larger screen.</p>
+                    <img src="images/3d models/infinite_hallway.png" class="project_image" id="infinite_hallway" alt="Infinite Hallway model" onclick="sizeImage(this)">
+                    <img src="images/3d models/landscape_render.png" class="project_image" id="landscape_render" alt="Landscape rendering" onclick="sizeImage(this)">
+                    <img src="images/3d models/room_final.png" class="project_image" id="room_final" alt="Room rendering" onclick="sizeImage(this)">
+                </div>
+                <br>
+                <h2 class="subsubtitle">Miscellaneous Projects</h2>
+                <div class="text_grid">
+                    <p>Just other projects I am working on that either are not that noteworthy or unrelated to the previous two categories.</p>
+                    <p>
+                        Current WIP project: homemade mini-railgun. It sounds a bit extreme, but I think the concept of a railgun is cool. The main goal is to fire needles
+                        (e.g. a sewing needle) at a fast enough speed for it to pierce plywood. Ideally, it will be handheld, but I have not done the calculations on how
+                        large the magnetic field (and current/battery) will need to be to achieve the speed. This was mainly inspired from videos on social media of people
+                        flicking a needle in their hand and being able to launch it hard enough to pierce drywall/wood.
+                    </p>
+                </div>
+                <br>
             </div>
-          <br>
         </div>
-      </div>
-      <div class="contact_section" id="contact">
-        <h1>Contact Me</h1>
-        <p><a href="mailto:averychristie50@gmail.com">averychristie50@gmail.com</a></p>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <p><a href="https://github.com/Viridiani/Viridiani"><img src="img/Octicons-mark-github.svg" alt="github logo"> Github</a></p>
-  </footer>
-  <script>
-    // scroll to element
-    function scroll_to_id(element_id) {
-      document.getElementById(element_id).scrollIntoView({behavior: "smooth"});
-    }
-    
-    let flags = []
-    function change_size(element_id) {
-      if (flags.includes(element_id)) {
-        document.getElementById(element_id).style.width = "50%";
-        document.getElementById(element_id).style.height = "50%";
-
-        flags.splice(flags.indexOf(element_id), 1);
-      } else {
-        document.getElementById(element_id).style.width = "100%";
-        document.getElementById(element_id).style.height = "100%";
-        flags.push(element_id);
-      }
-      // console.log(flags);
-    }
-  </script>
-  </body>
+        <!-- <div id="blog">
+            <h1 class="subtitle">Blog</h1>
+            <div class="text_grid">
+                <p>...</p>
+            </div>
+        </div> -->
+        <div id="contact">
+            <h1 class="subtitle">Contact Me</h1>
+            <figure>
+                <img id="me" src="images/me.jpg" alt="A photo of Avery (me)">
+                <figcaption id="me_caption">If you see me in public, this is what I look like. Feel free to strike up a conversation!</figcaption>
+            </figure>
+            <div class="flexbox">
+                <a href="mailto:averychristie50@gmail.com" target="_blank"><img src="icons/gmail-svgrepo-com.svg" alt="contact gmail" class="icon"></a>
+                <a href="https://github.com/" target="_blank"><img src="icons/github-rounded-border-svgrepo-com.svg" alt="github" class="icon"></a>
+                <a href="https://www.linkedin.com/in/avery-christie" target="_blank"><img src="icons/linkedin-svgrepo-com.svg" alt="linkedin" class="icon"></a>
+                <a href="https://www.instagram.com/mudcatcryptid/" target="_blank"><img src="icons/instagram-svgrepo-com.svg" alt="instagram" class="icon"></a>
+            </div>
+        </div>
+        <footer id="footer">
+            <p id="copyright">Copyright 2022-</p>
+            <script>getYear()</script>
+        </footer>
+    </body>
 </html>
